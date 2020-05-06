@@ -1,0 +1,107 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+
+public class ManagerPage extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ManagerPage frame = new ManagerPage();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ManagerPage() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 900, 750);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		contentPane.setBackground(new Color(240, 248, 255));
+		
+		JLabel lblNewLabel_1 = new JLabel("MANAGE APARTMENTS");
+		lblNewLabel_1.setBounds(225,25,500,30);
+		lblNewLabel_1.setFont(new Font("Verdana", Font.PLAIN, 35));
+		lblNewLabel_1.setBackground(UIManager.getColor("CheckBox.background"));
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Delete");
+		lblNewLabel_2.setBounds(95,595,500,30);
+		lblNewLabel_2.setFont(new Font("Verdana", Font.PLAIN, 20));
+		lblNewLabel_2.setBackground(UIManager.getColor("CheckBox.background"));
+		contentPane.add(lblNewLabel_2);
+		
+		JCheckBox chckbxNewCheckBox_4 = new JCheckBox();
+		chckbxNewCheckBox_4.setBackground(new Color(240, 248, 255));
+		chckbxNewCheckBox_4.setBounds(170,605,20,15);
+		contentPane.add(chckbxNewCheckBox_4);
+		
+		JLabel lblNewLabel_3 = new JLabel("Modify");
+		lblNewLabel_3.setBounds(200,595,500,30);
+		lblNewLabel_3.setFont(new Font("Verdana", Font.PLAIN, 20));
+		lblNewLabel_3.setBackground(UIManager.getColor("CheckBox.background"));
+		contentPane.add(lblNewLabel_3);
+		
+		JCheckBox chckbxNewCheckBox_5 = new JCheckBox();
+		chckbxNewCheckBox_5.setBackground(new Color(240, 248, 255));
+		chckbxNewCheckBox_5.setBounds(270,605,20,15);
+		contentPane.add(chckbxNewCheckBox_5);
+		
+		JLabel lblNewLabel_5 = new JLabel("Apartment 1");
+		lblNewLabel_5.setBounds(95,75,500,30);
+		lblNewLabel_5.setFont(new Font("Verdana", Font.PLAIN, 15));
+		lblNewLabel_5.setBackground(UIManager.getColor("CheckBox.background"));
+		contentPane.add(lblNewLabel_5);
+		
+		
+		
+		JLabel lblNewLabel_4 = new JLabel("Select");
+		lblNewLabel_4.setBounds(100,185,500,30);
+		lblNewLabel_4.setFont(new Font("Verdana", Font.PLAIN, 15));
+		lblNewLabel_4.setBackground(UIManager.getColor("CheckBox.background"));
+		contentPane.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_6 = new JLabel("Select");
+		lblNewLabel_6.setBounds(100,185,500,30);
+		lblNewLabel_6.setFont(new Font("Verdana", Font.PLAIN, 15));
+		lblNewLabel_6.setBackground(UIManager.getColor("CheckBox.background"));
+		contentPane.add(lblNewLabel_5);
+		
+		JCheckBox chckbxNewCheckBox_6 = new JCheckBox();
+		chckbxNewCheckBox_6.setBackground(new Color(240, 248, 255));
+		chckbxNewCheckBox_6.setBounds(150,195,20,15);
+		contentPane.add(chckbxNewCheckBox_6);
+		
+		JPanel scrollPane = new JPanel();
+		scrollPane.setBounds(85, 75, 715, 550);
+		scrollPane.setBackground(Color.WHITE);
+		contentPane.add(scrollPane);
+		
+		
+		
+	}
+
+}
