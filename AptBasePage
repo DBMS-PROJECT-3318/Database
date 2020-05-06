@@ -1,0 +1,188 @@
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.sql.*;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javafx.scene.image.*;
+
+
+public class AptBasePage extends JFrame {
+
+	private JPanel contentPane;
+	Connection conn;
+	private JTable table;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AptBasePage frame = new AptBasePage();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public AptBasePage() {
+		conn = SqliteConnect.dbConnector();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 901, 500);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		contentPane.setBackground(new Color(240, 248, 255));
+	
+		JLabel lblNewLabel_1 = new JLabel("PRICING");
+		lblNewLabel_1.setBounds(50,68,100,15);
+		lblNewLabel_1.setBackground(UIManager.getColor("CheckBox.background"));
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Minimum");
+		lblNewLabel_2.setBounds(50,100,100,15);
+		lblNewLabel_2.setBackground(UIManager.getColor("CheckBox.background"));
+		contentPane.add(lblNewLabel_2);
+		
+		JSpinner spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(0, 0, 1499, 10));
+		spinner.setBounds(50,115,100,25);
+		contentPane.add(spinner);
+		
+		JLabel lblNewLabel_3 = new JLabel("Maximum");
+		lblNewLabel_3.setBounds(50,140,100,15);
+		lblNewLabel_3.setBackground(UIManager.getColor("CheckBox.background"));
+		contentPane.add(lblNewLabel_3);
+		
+		JSpinner spinner1 = new JSpinner();
+		spinner1.setModel(new SpinnerNumberModel(0, 0, 1500, 10));
+		spinner1.setBounds(50,155,100,25);
+		contentPane.add(spinner1);
+		
+		JLabel lblNewLabel_4 = new JLabel("Floors");
+		lblNewLabel_4.setBounds(50,185,100,15);
+		lblNewLabel_4.setBackground(UIManager.getColor("CheckBox.background"));
+		contentPane.add(lblNewLabel_4);
+		
+		JCheckBox chckbxNewCheckBox_4 = new JCheckBox("One");
+		chckbxNewCheckBox_4.setBackground(new Color(240, 248, 255));
+		chckbxNewCheckBox_4.setBounds(50,205,100,15);
+		contentPane.add(chckbxNewCheckBox_4);
+		
+		JCheckBox chckbxNewCheckBox_5 = new JCheckBox("Two");
+		chckbxNewCheckBox_5.setBackground(new Color(240, 248, 255));
+		chckbxNewCheckBox_5.setBounds(50,225,100,15);
+		contentPane.add(chckbxNewCheckBox_5);
+		
+		JLabel lblNewLabel_5 = new JLabel("Rooms");
+		lblNewLabel_5.setBounds(50,245,100,15);
+		lblNewLabel_5.setBackground(UIManager.getColor("CheckBox.background"));
+		contentPane.add(lblNewLabel_5);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("1 Room");
+		chckbxNewCheckBox.setBackground(new Color(240, 248, 255));
+		chckbxNewCheckBox.setBounds(50,265,100,15);
+		contentPane.add(chckbxNewCheckBox);
+		
+		JCheckBox chckbxNewCheckBox1 = new JCheckBox("2 Room");
+		chckbxNewCheckBox1.setBackground(new Color(240, 248, 255));
+		chckbxNewCheckBox1.setBounds(50,280,100,15);
+		contentPane.add(chckbxNewCheckBox1);
+		
+		JCheckBox chckbxNewCheckBox2 = new JCheckBox("3 Room");
+		chckbxNewCheckBox2.setBackground(new Color(240, 248, 255));
+		chckbxNewCheckBox2.setBounds(50,295,100,15);
+		contentPane.add(chckbxNewCheckBox2);
+		
+		JCheckBox chckbxNewCheckBox3 = new JCheckBox("4 Room");
+		chckbxNewCheckBox3.setBackground(new Color(240, 248, 255));
+		chckbxNewCheckBox3.setBounds(50,310,100,15);
+		contentPane.add(chckbxNewCheckBox3);
+		
+		JLabel lblNewLabel_6 = new JLabel("Pets");
+		lblNewLabel_6.setBounds(50,330,100,15);
+		lblNewLabel_6.setBackground(UIManager.getColor("CheckBox.background"));
+		contentPane.add(lblNewLabel_6);
+		
+		
+		JCheckBox chckbxNewCheckBox5 = new JCheckBox("Allowed");
+		chckbxNewCheckBox5.setBackground(new Color(240, 248, 255));
+		chckbxNewCheckBox5.setBounds(50,345,200,15);
+		contentPane.add(chckbxNewCheckBox5);
+		
+		JCheckBox chckbxNewCheckBox6 = new JCheckBox("Not Allowed");
+		chckbxNewCheckBox6.setBackground(new Color(240, 248, 255));
+		chckbxNewCheckBox6.setBounds(50,360,200,15);
+		contentPane.add(chckbxNewCheckBox6);
+		
+		JLabel search = new JLabel("Search: ");
+		search.setBounds(700,20,100,15);
+		search.setBackground(UIManager.getColor("CheckBox.background"));
+		contentPane.add(search);
+		
+		JTextField textField = new JTextField();
+		textField.setBounds(750,20,100,15);
+		contentPane.add(textField);
+      
+		
+		JButton btnSearch = new JButton("Search :)");
+		btnSearch.setBounds(100, 410, 100, 15);
+		contentPane.add(btnSearch);
+
+		
+		JLabel AccLabel = new JLabel("Account : ");
+		AccLabel.setBounds(47, 12, 70, 15);
+		contentPane.add(AccLabel);
+		
+		String name = "";
+		try {
+			String query="SELECT UserName FROM User WHERE Logins = 1";
+			PreparedStatement pst=conn.prepareStatement(query);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				name = rs.getString(1);
+			}
+			
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, e);
+		}
+		
+		JLabel CurrentUser = new JLabel(name);
+		CurrentUser.setBounds(119, 12, 144, 15);
+		contentPane.add(CurrentUser);
+		
+		
+		
+		
+		JPanel scrollPane = new JPanel();
+		scrollPane.setBounds(407, 68, 452, 266);
+		scrollPane.setBackground(Color.WHITE);
+		contentPane.add(scrollPane);
+		
+		JLabel results = new JLabel("Results: ");
+		results.setBounds(100,300,400,15);
+		scrollPane.add(results);
+		
+		
+		
+	}
+}
+
