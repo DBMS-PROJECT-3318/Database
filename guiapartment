@@ -1,0 +1,168 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.SystemColor;
+import javax.swing.JSplitPane;
+import javax.swing.JDesktopPane;
+import javax.swing.BoxLayout;
+import javax.swing.DefaultBoundedRangeModel;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.GroupLayout.Alignment;
+import net.miginfocom.swing.MigLayout;
+import java.awt.GridLayout;
+import java.awt.GridBagLayout;
+import java.awt.event.ContainerAdapter;
+import java.awt.event.ContainerEvent;
+import java.util.Hashtable;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.FlowLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.JToggleButton;
+import javax.swing.JLayeredPane;
+import javax.swing.JEditorPane;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+
+public class guiapartment {
+
+	private JFrame frame;
+
+	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					guiapartment window = new guiapartment();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public guiapartment() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setForeground(Color.WHITE);
+		
+		frame.setUndecorated(false);
+		frame.setVisible(false);
+		frame.addContainerListener(new ContainerAdapter() {
+			@Override
+			public void componentAdded(ContainerEvent arg0) {
+			}
+		});
+		frame.getContentPane().setBackground(Color.WHITE);
+		frame.getContentPane().setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(SystemColor.activeCaption);
+		panel.setBounds(0, 0, 484, 47);
+		frame.getContentPane().add(panel);
+		
+		JLabel lblNewLabel = new JLabel("APARTMENTS");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
+	 	lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+		panel.add(lblNewLabel);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(240, 248, 255));
+		panel_1.setBounds(0, 46, 112, 415);
+		frame.getContentPane().add(panel_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("PRICING");
+		lblNewLabel_1.setForeground(new Color(0, 0, 0));
+		lblNewLabel_1.setBackground(UIManager.getColor("CheckBox.background"));
+		panel_1.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("   MIN and MAX    ");
+		panel_1.add(lblNewLabel_2);
+		
+		JSpinner spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(0, null, 1499, 3));
+		panel_1.add(spinner);
+		
+		JSpinner spinner_1 = new JSpinner();
+		spinner_1.setModel(new SpinnerNumberModel(0, null, 1500, 3));
+		panel_1.add(spinner_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("Rooms 1-4");
+		panel_1.add(lblNewLabel_3);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("1 Room");
+		chckbxNewCheckBox.setBackground(new Color(240, 248, 255));
+		panel_1.add(chckbxNewCheckBox);
+		
+		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("2 Room");
+		chckbxNewCheckBox_1.setBackground(new Color(240, 248, 255));
+		panel_1.add(chckbxNewCheckBox_1);
+		
+		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("3 Room");
+		chckbxNewCheckBox_2.setBackground(new Color(240, 248, 255));
+		panel_1.add(chckbxNewCheckBox_2);
+		
+		JCheckBox chckbxNewCheckBox_3 = new JCheckBox("4+ Room  ");
+		chckbxNewCheckBox_3.setBackground(new Color(240, 248, 255));
+		panel_1.add(chckbxNewCheckBox_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("             Floors             ");
+		panel_1.add(lblNewLabel_4);
+		
+		JCheckBox chckbxNewCheckBox_4 = new JCheckBox("One");
+		chckbxNewCheckBox_4.setBackground(new Color(240, 248, 255));
+		panel_1.add(chckbxNewCheckBox_4);
+		
+		JCheckBox chckbxNewCheckBox_5 = new JCheckBox("Two");
+		chckbxNewCheckBox_5.setBackground(new Color(240, 248, 255));
+		panel_1.add(chckbxNewCheckBox_5);
+		
+		JLabel lblNewLabel_5 = new JLabel("Welcome to your one stop shop for all your apartment");
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_5.setBounds(140, 281, 297, 42);
+		frame.getContentPane().add(lblNewLabel_5);
+		
+		JLabel lblNewLabel_6 = new JLabel("needs! \r\n");
+		lblNewLabel_6.setBounds(264, 311, 44, 25);
+		frame.getContentPane().add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_7 = new JLabel("Here you will be able to look up and find your perfect apartment! \r\n");
+		lblNewLabel_7.setBounds(132, 327, 352, 31);
+		frame.getContentPane().add(lblNewLabel_7);
+		frame.setBounds(200, 200, 500, 500);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		DefaultBoundedRangeModel model = new DefaultBoundedRangeModel(750, 0, 1, 1500);
+      
+
+	}
+}
